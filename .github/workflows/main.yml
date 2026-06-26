@@ -1,0 +1,11 @@
+name: adder
+on: push
+jobs:
+  test:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - run: pwd
+      - run: ls
+      - run: unset VERILATOR_ROOT && verilator -Wall --binary --trace adder adder_tb
+      - run: ./obj_dir/Vadder
